@@ -15,11 +15,11 @@ private:
     int x;
     int y;
 public:
-    Point(int x=0, int y=0)
-    :x(x),y(y)
+    Point(int xx=0, int yy=0)
+    :x(xx),y(yy)
     {}
-    int getX() const{return x;}
-    int getY() const{return y;}
+    int getX() const{return this->x;}
+    int getY() const{return this->y;}
     void setX(int x){this->x=x;}
     void setY(int y){this->y=y;}
 };

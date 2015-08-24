@@ -16,19 +16,7 @@
 using namespace std;
 int main()
 {
-//    Rectangle r=Rectangle(4, 3, 1, 1);
-//    Rectangle r2(r);
-//    Rectangle r3 = r2;
-//    Rectangle r4=Rectangle(4, 9, 5, 1);
-//    
-//    Point point(3, 4);
-//    Circle c1(point, 3);
-//    
     Shape* shapeList[20];
-//    shapeList[0]=(Shape*)&r;
-//    shapeList[1]=(Shape*)&r2;
-//    shapeList[2]=(Shape*)&c1;
-//    shapeList[3]=(Shape*)&r4;
     
     srand(time(0));
     int w, h, x, y;
@@ -40,6 +28,8 @@ int main()
         y=rand()%10+1;
         cout<<w<<", "<<h<<endl;
         shapeList[i]=new Rectangle(w,h,x,y);
+        shapeList[i]->no=i;
+        cout<<"第"<<i<<"个Shape被new,"<<"地址是："<<shapeList[i]<<endl;
     }
     
     int cx, cy, cr;
@@ -50,6 +40,8 @@ int main()
         cr=rand()%10+1;
         cout<<"Radium: "<<cr<<endl;
         shapeList[j]=new Circle(cx, cy, cr);
+        shapeList[j]->no=j;
+        cout<<"第"<<j<<"个Shape被new,"<<"地址是："<<shapeList[j]<<endl;
 
     }
     
@@ -59,7 +51,7 @@ int main()
     {
         Shape* s=shapeList[t];
         int area=s->getArea();
-        cout<<"t: "<<t<<", Area: "<<area<<endl;
+//        cout<<"t: "<<t<<", Area: "<<area<<endl;
         
         if(area<50)
         {
@@ -84,9 +76,28 @@ int main()
     
     for(int b=0;b<20-countTooSamll;b++)
     {
-        cout<<"b: "<<b<<", area: "<<shapeListResult[b]->getArea()<<endl;
+        cout<<shapeListResult[b]->no<<"号图形的"<<"面积是: "<<shapeListResult[b]->getArea()<<endl;
     }
     
+    
+    for(int i=0;i<20-countTooSamll;i++)
+    {
+        Shape* s=shapeListResult[i];
+        cout<<"第"<<shapeListResult[i]->no<<"个Shape地址是："<<shapeListResult[i]<<endl;
+    
+    }
+    
+    for(int i=0;i<20;i++)
+    {
+        Shape* s=shapeList[i];
+        if(s)
+        {
+            delete s;
+            cout<<"第"<<i<<"个Shape被delete,"<<"地址是："<<shapeList[i]<<endl;
+        }
+        else
+            cout<<"第"<<i<<"个Shape早已被delete,"<<"地址是："<<shapeList[i]<<endl;
+    }
     
     return 0;
 }

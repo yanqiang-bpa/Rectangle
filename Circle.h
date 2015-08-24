@@ -10,7 +10,9 @@
 #define _Circle_h
 #include "Point.h"
 #include "Shape.h"
+#include <iostream>
 #define pi 3.14
+using namespace std;
 
 class Circle:public Shape
 {
@@ -26,6 +28,7 @@ public:
     {
         return int(pi*radius*radius);
     }
+    virtual ~Circle(){cout<<"Circle was deconstucted."<<endl;}
 };
 
 inline

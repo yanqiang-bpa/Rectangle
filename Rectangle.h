@@ -10,6 +10,8 @@
 #define _Rectangle_h
 #include "Point.h"
 #include "Shape.h"
+#include <iostream>
+using namespace std;
 
 class Rectangle:public Shape
 {
@@ -22,13 +24,15 @@ public:
     Rectangle(int width, int height, int x, int y);
     Rectangle(const Rectangle& other);
     Rectangle& operator=(const Rectangle& other);
-    ~Rectangle();
+//    ~Rectangle();
     int getWidth() const {return width;}
     int getHeight() const {return height;}
     void setWidth(int w){this->width=w;}
     void setHeight(int h){this->height=h;}
     Point* getLeftUp() const {return this->leftUp;}
     int virtual getArea();
+    virtual ~Rectangle();
+
 };
 
 inline
@@ -75,6 +79,7 @@ inline
 Rectangle::~Rectangle()
 {
     delete leftUp;
+    cout<<"Rectangle was deconstucted."<<endl;
 }
 
 
